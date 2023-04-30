@@ -140,7 +140,7 @@ class ShlokaCard extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
                       ),
-                      onPressed: onPressRefresh,
+                      onPressed: onPressExplain,
                       child: const Text(
                         "Explain",
                         style: TextStyle(

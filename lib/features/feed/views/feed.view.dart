@@ -1,32 +1,20 @@
 import 'package:bgm/core/constants.dart';
-import 'package:bgm/core/loader.dart';
 import 'package:bgm/features/feed/wigets/index.dart';
+import 'package:bgm/features/home/controllers/verse.controller.dart';
 import 'package:bgm/models/verse.dart';
 import 'package:bgm/theme/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FeedView extends StatefulWidget {
-  const FeedView({super.key});
+  final VerseController controller = Get.put(VerseController());
+  FeedView({super.key});
 
   @override
   State<FeedView> createState() => _FeedViewState();
 }
 
 class _FeedViewState extends State<FeedView> {
-  Verse verse = Verse(
-    id: '',
-    verseId: 0,
-    verseNumber: 0,
-    chapterNumber: 0,
-    slug: '',
-    text: '',
-    transliteration: '',
-    wordMeanings: '',
-    translations: [],
-    commentaries: [],
-  );
-
   void showBottomModal() {
     showModalBottomSheet(
       context: context,
@@ -36,8 +24,15 @@ class _FeedViewState extends State<FeedView> {
     );
   }
 
+  void getDialyVerse() async {
+    await widget.controller.getVerse();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    bool isloading = widget.controller.isloading.value;
+
     return Scaffold(
       backgroundColor: Pallet.primaryColor,
       body: SingleChildScrollView(
@@ -50,17 +45,17 @@ class _FeedViewState extends State<FeedView> {
               ontapProfile: () => Get.toNamed('/about'),
               onPressSearch: () => Get.toNamed('/search'),
             ),
-            verse.text.isNotEmpty
-                ? ShlokaCard(
-                    onPressRefresh: () {},
+            isloading
+                ? const CircularProgressIndicator()
+                : ShlokaCard(
+                    onPressRefresh: getDialyVerse,
                     onPressLike: () {},
                     onPressExplain: showBottomModal,
                     onPressShare: () {},
-                    shlokaText: 'धृतराष्ट्र उवाच \nधर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः। \nमामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय।।1.1।।',
-                    shlokaEngText: 'Dhṛtarāṣṭra said: “O Sanjaya, what did my people and the Pāṇḍavas do, gathered together on the holy field of Kurukshetra, eager for battle?”',
-                    titleText: "verse.slug",
+                    shlokaText: widget.controller.dailyVerse.value.text,
+                    shlokaEngText: widget.controller.dailyVerse.value.transliteration,
+                    titleText: widget.controller.dailyVerse.value.slug,
                   )
-                : const SizedBox()
           ],
         ),
       ),

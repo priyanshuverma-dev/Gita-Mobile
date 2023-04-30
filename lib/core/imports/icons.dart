@@ -6,4 +6,6 @@ class PIcons {
   static const String userOutlined = 'assets/icons/user_blank.svg';
   static const String userFilled = 'assets/icons/user_filled.svg';
   static const String globe = 'assets/icons/globe.svg';
+  static const String angleRight = 'assets/icons/angle_right.svg';
+  static const String angleLeft = 'assets/icons/angle_left.svg';
 }

@@ -29,35 +29,35 @@ class Verse {
   List<Commentary>? translations;
   List<Commentary>? commentaries;
 
-  // factory Verse.fromRawJson(String str) => Verse.fromJson(json.decode(str));
+  factory Verse.fromRawJson(String str) => Verse.fromJson(json.decode(str));
 
-  // String toRawJson() => json.encode(toJson());
+  String toRawJson() => json.encode(toJson());
 
-  // factory Verse.fromJson(Map<String, dynamic> json) => Verse(
-  //       id: json["_id"],
-  //       verseId: json["id"],
-  //       verseNumber: json["verse_number"],
-  //       chapterNumber: json["chapter_number"],
-  //       slug: json["slug"],
-  //       text: json["text"],
-  //       transliteration: json["transliteration"],
-  //       wordMeanings: json["word_meanings"],
-  //       translations: List<Commentary>.from(json["translations"].map((x) => Commentary.fromJson(x))),
-  //       commentaries: List<Commentary>.from(json["commentaries"].map((x) => Commentary.fromJson(x))),
-  //     );
+  factory Verse.fromJson(Map<String, dynamic> json) => Verse(
+        id: json["_id"],
+        verseId: json["id"],
+        verseNumber: json["verse_number"],
+        chapterNumber: json["chapter_number"],
+        slug: json["slug"],
+        text: json["text"],
+        transliteration: json["transliteration"],
+        wordMeanings: json["word_meanings"],
+        translations: List<Commentary>.from(json["translations"].map((x) => Commentary.fromJson(x))),
+        commentaries: List<Commentary>.from(json["commentaries"].map((x) => Commentary.fromJson(x))),
+      );
 
-  // Map<String, dynamic> toJson() => {
-  //       "_id": id,
-  //       "id": verseId,
-  //       "verse_number": verseNumber,
-  //       "chapter_number": chapterNumber,
-  //       "slug": slug,
-  //       "text": text,
-  //       "transliteration": transliteration,
-  //       "word_meanings": wordMeanings,
-  //       "translations": List<dynamic>.from(translations.map((x) => x.toJson())),
-  //       "commentaries": List<dynamic>.from(commentaries.map((x) => x.toJson())),
-  //     };
+  Map<String, dynamic> toJson() => {
+        "_id": id,
+        "id": verseId,
+        "verse_number": verseNumber,
+        "chapter_number": chapterNumber,
+        "slug": slug,
+        "text": text,
+        "transliteration": transliteration,
+        "word_meanings": wordMeanings,
+        "translations": List<dynamic>.from(translations!.map((x) => x.toJson())),
+        "commentaries": List<dynamic>.from(commentaries!.map((x) => x.toJson())),
+      };
 }
 
 class Commentary {
