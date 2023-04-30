@@ -8,11 +8,14 @@ class FeedAppbar extends StatelessWidget {
   final String profileUrl;
   final String name;
   final VoidCallback onPressSearch;
+  final VoidCallback ontapProfile;
+
   const FeedAppbar({
     super.key,
     required this.profileUrl,
     required this.name,
     required this.onPressSearch,
+    required this.ontapProfile,
   });
 
   @override
@@ -23,10 +26,13 @@ class FeedAppbar extends StatelessWidget {
       margin: const EdgeInsets.only(top: 25),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 23,
-            backgroundImage: NetworkImage(
-              profileUrl,
+          InkWell(
+            onTap: ontapProfile,
+            child: CircleAvatar(
+              radius: 23,
+              backgroundImage: NetworkImage(
+                profileUrl,
+              ),
             ),
           ),
           Flexible(

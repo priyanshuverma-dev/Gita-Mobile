@@ -1,7 +1,6 @@
 import 'dart:async';
-
-import 'package:bgm/features/home/views/home.view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashView extends StatefulWidget {
@@ -17,12 +16,7 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     Timer(
       const Duration(seconds: 3),
-      () => Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomeView(),
-        ),
-      ),
+      () => Get.offAndToNamed('/'),
     );
   }
 

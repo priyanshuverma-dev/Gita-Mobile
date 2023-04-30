@@ -9,6 +9,14 @@ unfocusKeyboard(context) {
   }
 }
 
+void showSnackBar(BuildContext context, String text) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(text),
+    ),
+  );
+}
+
 void hideKeyboard() {
   SystemChannels.textInput.invokeMethod('TextInput.hide');
 }

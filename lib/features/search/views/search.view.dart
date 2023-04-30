@@ -1,11 +1,9 @@
 import 'package:bgm/core/utils.dart';
-import 'package:bgm/features/search/wigets/search.bar.dart';
 import 'package:bgm/theme/index.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SearchView extends StatefulWidget {
-  static route() => CupertinoPageRoute(
+  static route() => MaterialPageRoute(
         builder: (context) => const SearchView(),
         fullscreenDialog: true,
       );
@@ -36,6 +34,8 @@ class _SearchViewState extends State<SearchView> {
       onTap: hideKeyboard,
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
+          automaticallyImplyLeading: false,
           title: SizedBox(
             height: 50,
             child: TextField(
