@@ -26,37 +26,52 @@ class _FeedViewState extends State<FeedView> {
 
   void getDialyVerse() async {
     await widget.controller.getVerse();
-    setState(() {});
+  }
+
+  void nextVerse() {
+    widget.controller.increaseVerseNo();
+  }
+
+  void previousVerse() {
+    widget.controller.descreseVerseNo();
   }
 
   @override
   Widget build(BuildContext context) {
-    bool isloading = widget.controller.isloading.value;
-
     return Scaffold(
       backgroundColor: Pallet.primaryColor,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            FeedAppbar(
-              name: 'Priyanshu',
-              profileUrl: Constants.photourl,
-              ontapProfile: () => Get.toNamed('/about'),
-              onPressSearch: () => Get.toNamed('/search'),
-            ),
-            isloading
-                ? const CircularProgressIndicator()
-                : ShlokaCard(
-                    onPressRefresh: getDialyVerse,
-                    onPressLike: () {},
-                    onPressExplain: showBottomModal,
-                    onPressShare: () {},
-                    shlokaText: widget.controller.dailyVerse.value.text,
-                    shlokaEngText: widget.controller.dailyVerse.value.transliteration,
-                    titleText: widget.controller.dailyVerse.value.slug,
-                  )
-          ],
+        child: Obx(
+          () => Column(
+            children: [
+              Text(widget.controller.verseNo.value.toString()),
+              FeedAppbar(
+                name: 'Priyanshu',
+                profileUrl: Constants.photourl,
+                ontapProfile: () => Get.toNamed('/about'),
+                onPressSearch: () => Get.toNamed('/search'),
+              ),
+              widget.controller.isloading.value
+                  ? const CircularProgressIndicator()
+                  : ShlokaCard(
+                      onPressRight: nextVerse,
+                      onPressLeft: () {
+                        if (widget.controller.verseNo.value == 0) {
+                          return;
+                        } else {
+                          previousVerse();
+                        }
+                      },
+                      onPressLike: () {},
+                      onPressExplain: showBottomModal,
+                      onPressShare: () {},
+                      shlokaText: widget.controller.dailyVerse.value.text,
+                      shlokaEngText: widget.controller.dailyVerse.value.transliteration,
+                      titleText: widget.controller.dailyVerse.value.slug,
+                    ),
+            ],
+          ),
         ),
       ),
     );

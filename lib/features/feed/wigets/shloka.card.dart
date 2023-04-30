@@ -5,7 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ShlokaCard extends StatelessWidget {
-  final VoidCallback onPressRefresh;
+  final VoidCallback? onPressRight;
+  final VoidCallback? onPressLeft;
   final VoidCallback onPressLike;
   final VoidCallback onPressExplain;
   final VoidCallback onPressShare;
@@ -14,7 +15,8 @@ class ShlokaCard extends StatelessWidget {
   final String shlokaEngText;
   const ShlokaCard({
     super.key,
-    required this.onPressRefresh,
+    required this.onPressRight,
+    required this.onPressLeft,
     required this.onPressLike,
     required this.onPressExplain,
     required this.onPressShare,
@@ -62,9 +64,16 @@ class ShlokaCard extends StatelessWidget {
                     ),
                     const Spacer(flex: 1),
                     IconButton(
-                      onPressed: onPressRefresh,
+                      onPressed: onPressLeft,
                       icon: SvgPicture.asset(
-                        PIcons.searchOutlined,
+                        PIcons.angleLeft,
+                        height: 15,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: onPressRight,
+                      icon: SvgPicture.asset(
+                        PIcons.angleRight,
                         height: 15,
                       ),
                     ),
