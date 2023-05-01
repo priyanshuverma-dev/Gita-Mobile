@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:bgm/core/constants.dart';
-import 'package:bgm/core/error.handller.dart';
+import 'package:bgm/core/error.handler.dart';
 import 'package:bgm/models/verse.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -27,8 +27,12 @@ class VerseController extends GetxController {
   @override
   void onInit() async {
     final prefs = await SharedPreferences.getInstance();
-    final verseId = prefs.getInt("verseNo");
-    verseNo.value = verseId!;
+    int? verseId = prefs.getInt("verseNo");
+    if (verseId == null) {
+      verseNo.value = 1;
+    } else {
+      verseNo.value = verseId;
+    }
     getVerse();
     super.onInit();
   }
@@ -43,7 +47,11 @@ class VerseController extends GetxController {
       httpErrorHandle(
         response: res,
         onSuccess: () {
-          dailyVerse.value = Verse.fromRawJson(res.body);
+          var verse = Verse.fromRawJson(res.body);
+          var spilted = verse.slug.replaceAll('-', ' ');
+          dailyVerse.value = verse;
+          dailyVerse.value.slug = spilted;
+          print(spilted);
           isloading.value = false;
         },
       );

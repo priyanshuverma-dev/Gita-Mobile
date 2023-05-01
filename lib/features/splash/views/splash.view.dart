@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:bgm/core/imports/lotties.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -28,9 +29,7 @@ class _SplashViewState extends State<SplashView> {
         child: Column(
           children: [
             Expanded(
-              child: Lottie.asset(
-                'assets/lottie/loading.json',
-              ),
+              child: Lottie.asset(PLotties.loading),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),

@@ -11,8 +11,7 @@ class ShlokaCard extends StatelessWidget {
   final VoidCallback onPressExplain;
   final VoidCallback onPressShare;
   final String titleText;
-  final String shlokaText;
-  final String shlokaEngText;
+  final Widget child;
   const ShlokaCard({
     super.key,
     required this.onPressRight,
@@ -20,9 +19,8 @@ class ShlokaCard extends StatelessWidget {
     required this.onPressLike,
     required this.onPressExplain,
     required this.onPressShare,
-    required this.shlokaText,
-    required this.shlokaEngText,
     required this.titleText,
+    required this.child,
   });
 
   @override
@@ -40,7 +38,7 @@ class ShlokaCard extends StatelessWidget {
           child: Column(
             children: [
               const Text(
-                'Shloka Of The Day',
+                'Bhagavad Gita',
                 style: TextStyle(
                   color: Pallet.darkColor,
                   fontWeight: FontWeight.bold,
@@ -55,7 +53,7 @@ class ShlokaCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      titleText,
+                      titleText.toUpperCase(),
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -80,61 +78,7 @@ class ShlokaCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 20,
-                ),
-                width: double.maxFinite,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color.fromRGBO(255, 255, 255, 1),
-                      Color.fromRGBO(247, 255, 250, 1),
-                    ],
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        PIMGS.krishna,
-                        cacheHeight: 200,
-                        cacheWidth: 276,
-                        height: 200,
-                        width: 276,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                    Text(
-                      shlokaText,
-                      style: GoogleFonts.tiroDevanagariHindi(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Pallet.darkColor,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Divider(
-                      color: Pallet.greyColor,
-                    ),
-                    Text(
-                      shlokaEngText,
-                      style: GoogleFonts.tiroDevanagariHindi(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Pallet.darkColor,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ),
+              SizedBox(child: child),
               const Divider(),
               Row(
                 children: [
@@ -169,6 +113,76 @@ class ShlokaCard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MainContent extends StatelessWidget {
+  const MainContent({
+    super.key,
+    required this.shlokaText,
+    required this.shlokaEngText,
+  });
+
+  final String shlokaText;
+  final String shlokaEngText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 20,
+      ),
+      width: double.maxFinite,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        gradient: const LinearGradient(
+          colors: [
+            Color.fromRGBO(255, 255, 255, 1),
+            Color.fromRGBO(247, 255, 250, 1),
+          ],
+        ),
+      ),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              PIMGS.krishna,
+              cacheHeight: 200,
+              cacheWidth: 276,
+              height: 200,
+              width: 276,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Text(
+            shlokaText,
+            style: GoogleFonts.tiroDevanagariHindi(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Pallet.darkColor,
+              height: 1.5,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const Divider(
+            color: Pallet.greyColor,
+          ),
+          Text(
+            shlokaEngText,
+            style: GoogleFonts.tiroDevanagariHindi(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Pallet.darkColor,
+              height: 1.5,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }
