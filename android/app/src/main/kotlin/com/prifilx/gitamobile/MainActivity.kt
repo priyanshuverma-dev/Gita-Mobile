@@ -1,4 +1,4 @@
-package come.soms.gitamobile
+package com.prifilx.gitamobile
 
 import io.flutter.embedding.android.FlutterActivity
 

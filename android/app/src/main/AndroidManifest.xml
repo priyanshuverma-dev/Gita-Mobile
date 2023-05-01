@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="come.soms.gitamobile">
+    package="com.prifilx.gitamobile">
    <application
         android:label="Gita Mobile"
         android:name="${applicationName}"
