@@ -1,4 +1,4 @@
-import 'package:bgm/core/utils.dart';
+import 'package:GitaMobile/core/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 

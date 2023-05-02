@@ -1,4 +1,4 @@
-import 'package:bgm/theme/pallet.dart';
+import 'package:GitaMobile/theme/pallet.dart';
 import 'package:flutter/material.dart';
 
 class Loader extends StatelessWidget {

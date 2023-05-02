@@ -1,4 +1,4 @@
-import 'package:bgm/features/feed/views/feed.view.dart';
+import 'package:GitaMobile/functions/feed/views/feed.view.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {

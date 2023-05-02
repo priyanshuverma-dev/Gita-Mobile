@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:bgm/theme/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

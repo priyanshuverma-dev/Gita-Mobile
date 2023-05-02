@@ -1,6 +1,6 @@
-import 'package:bgm/core/animations/fade_animation.dart';
-import 'package:bgm/core/imports/icons.dart';
-import 'package:bgm/theme/index.dart';
+import 'package:GitaMobile/core/animations/fade_animation.dart';
+import 'package:GitaMobile/core/imports/icons.dart';
+import 'package:GitaMobile/theme/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

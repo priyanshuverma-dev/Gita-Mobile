@@ -68,12 +68,14 @@ class Commentary {
     required this.description,
     required this.authorName,
     required this.language,
+    required this.type,
   });
 
   int id;
   String description;
   String authorName;
   Language language;
+  String type;
 
   factory Commentary.fromRawJson(String str) => Commentary.fromJson(json.decode(str));
 
@@ -83,6 +85,7 @@ class Commentary {
         id: json["id"],
         description: json["description"],
         authorName: json["author_name"],
+        type: json["type"],
         language: languageValues.map[json["language"]]!,
       );
 
@@ -90,6 +93,7 @@ class Commentary {
         "id": id,
         "description": description,
         "author_name": authorName,
+        "type": type,
         "language": languageValues.reverse[language],
       };
 }

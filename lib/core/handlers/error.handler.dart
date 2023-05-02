@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bgm/core/utils.dart';
+import 'package:GitaMobile/core/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

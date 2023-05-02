@@ -1,10 +1,10 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:bgm/core/constants.dart';
-import 'package:bgm/core/handlers/error.handler.dart';
-import 'package:bgm/core/utils.dart';
-import 'package:bgm/models/verse.dart';
+import 'package:GitaMobile/core/constants.dart';
+import 'package:GitaMobile/core/handlers/error.handler.dart';
+import 'package:GitaMobile/core/utils.dart';
+import 'package:GitaMobile/models/verse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -65,7 +65,6 @@ class VerseController extends GetxController {
             var spilted = verse.slug.replaceAll('-', ' ');
             dailyVerse.value = verse;
             dailyVerse.value.slug = spilted;
-
             isloading.value = false;
           },
         );

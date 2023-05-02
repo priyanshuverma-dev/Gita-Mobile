@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:bgm/core/imports/lotties.dart';
+import 'package:GitaMobile/core/imports/lotties.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';

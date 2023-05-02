@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
-
-import 'package:bgm/core/constants.dart';
-import 'package:bgm/core/utils.dart';
-import 'package:bgm/features/feed/wigets/index.dart';
-import 'package:bgm/features/feed/wigets/networkError.card.dart';
-import 'package:bgm/features/home/controllers/verse.controller.dart';
-import 'package:bgm/models/verse.dart';
-import 'package:bgm/theme/index.dart';
 import 'package:screenshot/screenshot.dart';
+
+import '../../../core/constants.dart';
+import '../../../core/utils.dart';
+import '../../../models/verse.dart';
+import '../../../theme/index.dart';
+import '../controllers/verse.controller.dart';
+import '../wigets/index.dart';
+import '../wigets/networkError.card.dart';
 
 class FeedView extends StatefulWidget {
   const FeedView({super.key});
@@ -19,35 +19,6 @@ class FeedView extends StatefulWidget {
 }
 
 class _FeedViewState extends State<FeedView> {
-  void showBottomModal({required List<Commentary> translations}) {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return Container(
-          height: 500,
-          child: SingleChildScrollView(
-            physics: AlwaysScrollableScrollPhysics(),
-            child: Column(
-              children: [
-                ListView.builder(
-                  itemCount: translations.length,
-                  // shrinkWrap: true,
-                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(translations[index].authorName),
-                      subtitle: Text(translations[index].language.name),
-                    );
-                  },
-                )
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   void getPermissionDialog() {
     showDialog(
       context: context,
@@ -118,11 +89,13 @@ class _FeedViewState extends State<FeedView> {
                             return;
                           } else {
                             controller.descreseVerseNo();
+                            print([...controller.dailyVerse.value.translations, ...controller.dailyVerse.value.commentaries]);
                           }
                         },
                         onPressLike: () => showSnackBar(context, 'Testing snackbar!'),
-                        onPressExplain: () => showBottomModal(
-                          translations: controller.dailyVerse.value.translations,
+                        onPressExplain: () => Get.toNamed(
+                          'explain',
+                          arguments: [...controller.dailyVerse.value.translations, ...controller.dailyVerse.value.commentaries],
                         ),
                         onPressShare: () => controller.shareVerse(
                           shotController: screenshotController,

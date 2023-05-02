@@ -1,6 +1,5 @@
-import 'package:bgm/core/imports/index.dart';
-import 'package:bgm/models/commentary.dart';
-import 'package:bgm/theme/index.dart';
+import 'package:GitaMobile/core/imports/index.dart';
+import 'package:GitaMobile/theme/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';

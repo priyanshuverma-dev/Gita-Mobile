@@ -1,5 +1,5 @@
-import 'package:bgm/core/imports/index.dart';
-import 'package:bgm/theme/index.dart';
+import 'package:GitaMobile/core/imports/index.dart';
+import 'package:GitaMobile/theme/index.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

@@ -1,5 +1,5 @@
-import 'package:bgm/core/utils.dart';
-import 'package:bgm/theme/index.dart';
+import 'package:GitaMobile/core/utils.dart';
+import 'package:GitaMobile/theme/index.dart';
 import 'package:flutter/material.dart';
 
 class SearchView extends StatefulWidget {
