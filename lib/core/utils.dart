@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:bgm/theme/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,6 +14,8 @@ void showSnackBar(BuildContext context, String text) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(text),
+      behavior: SnackBarBehavior.floating,
+      dismissDirection: DismissDirection.startToEnd,
     ),
   );
 }

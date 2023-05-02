@@ -6,6 +6,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FeedView();
+    return const FeedView();
   }
 }

@@ -1,4 +1,5 @@
 import 'package:bgm/core/imports/index.dart';
+import 'package:bgm/models/commentary.dart';
 import 'package:bgm/theme/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -78,16 +79,16 @@ class ShlokaCard extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(child: child),
+              Container(child: child),
               const Divider(),
               Row(
                 children: [
-                  IconButton(
-                    onPressed: onPressLike,
-                    icon: const Icon(
-                      Icons.favorite_border,
-                    ),
-                  ),
+                  // IconButton(
+                  //   onPressed: onPressLike,
+                  //   icon: const Icon(
+                  //     Icons.favorite_border,
+                  //   ),
+                  // ),
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -123,10 +124,12 @@ class MainContent extends StatelessWidget {
     super.key,
     required this.shlokaText,
     required this.shlokaEngText,
+    required this.translation,
   });
 
   final String shlokaText;
   final String shlokaEngText;
+  final String translation;
 
   @override
   Widget build(BuildContext context) {
@@ -174,6 +177,16 @@ class MainContent extends StatelessWidget {
           ),
           Text(
             shlokaEngText,
+            style: GoogleFonts.tiroDevanagariHindi(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Pallet.darkColor,
+              height: 1.5,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            translation,
             style: GoogleFonts.tiroDevanagariHindi(
               fontSize: 16,
               fontWeight: FontWeight.w600,

@@ -1,17 +1,28 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:bgm/core/constants.dart';
-import 'package:bgm/core/error.handler.dart';
+import 'package:bgm/core/handlers/error.handler.dart';
+import 'package:bgm/core/utils.dart';
 import 'package:bgm/models/verse.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class VerseController extends GetxController {
   final baseUrl = Constants.serverUrl;
   var isloading = false.obs;
   var verseNo = 1.obs;
+
+  final BuildContext context;
+
+  VerseController({required this.context});
 
   Rx<Verse> dailyVerse = Verse(
     id: '',
@@ -22,6 +33,8 @@ class VerseController extends GetxController {
     text: '',
     transliteration: '',
     wordMeanings: '',
+    commentaries: [],
+    translations: [],
   ).obs;
 
   @override
@@ -40,29 +53,34 @@ class VerseController extends GetxController {
   Future getVerse() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setInt("verseNo", verseNo.value);
-    print("getVerse() called ✔");
     try {
       isloading.value = true;
       var res = await http.get(Uri.parse('$baseUrl/daily?prev=$verseNo'));
-      httpErrorHandle(
-        response: res,
-        onSuccess: () {
-          var verse = Verse.fromRawJson(res.body);
-          var spilted = verse.slug.replaceAll('-', ' ');
-          dailyVerse.value = verse;
-          dailyVerse.value.slug = spilted;
-          print(spilted);
-          isloading.value = false;
-        },
-      );
+      if (context.mounted) {
+        httpErrorHandle(
+          context: context,
+          response: res,
+          onSuccess: () {
+            var verse = Verse.fromRawJson(res.body);
+            var spilted = verse.slug.replaceAll('-', ' ');
+            dailyVerse.value = verse;
+            dailyVerse.value.slug = spilted;
+
+            isloading.value = false;
+          },
+        );
+      }
+    } on FormatException catch (e) {
+      if (context.mounted) showSnackBar(context, e.message);
     } on SocketException catch (e) {
-      Get.snackbar('Connection Error', e.toString());
+      if (context.mounted) showSnackBar(context, e.message);
+      log(e.message, error: e);
     } on PlatformException catch (e) {
-      Get.snackbar('Connection Error', e.toString());
+      if (context.mounted) showSnackBar(context, e.details);
+      log(e.details, error: e);
     } catch (e) {
-      print(e);
-      Get.snackbar('Connection Error', e.toString());
-      isloading.value = false;
+      if (context.mounted) showSnackBar(context, e.toString());
+      log(e.toString(), error: e);
     } finally {
       isloading.value = false;
     }
@@ -76,5 +94,58 @@ class VerseController extends GetxController {
   void descreseVerseNo() async {
     verseNo.value = dailyVerse.value.verseId - 1;
     await getVerse();
+  }
+
+  Future shareVerse({
+    required ScreenshotController shotController,
+    required BuildContext context,
+    required String slug,
+    required VoidCallback getPermissionDialog,
+  }) async {
+    // Checking Storage Permission having or not
+    bool isStorageDenied = await Permission.storage.isDenied;
+    if (isStorageDenied) {
+      return getPermissionDialog();
+    }
+
+    try {
+      isloading.value == true;
+
+      /// getting path from path_provide package
+      final directory = (await getExternalStorageDirectory())!.path;
+
+      // making fileName
+      final fileName = '$slug - GitaMobile';
+
+      // Checking if file with same name already exist than delete
+
+      // taking screenshot with controller....
+      final image = await shotController.capture(delay: const Duration(microseconds: 10));
+      // Checking if screenshot is taken [image] = screenshot is null
+      log(image.toString());
+      log('image');
+      if (image != null) {
+        /// image is not null than save that to storage
+        /// saving in [File] type in [Png] format in
+        /// "/storage/emulated/0/Android/data/com.soms.gitaMobile/files"
+        final imagePath = await File('$directory/$fileName.png').create();
+        await imagePath.writeAsBytes(image);
+
+        /// Share Plugin
+        await Share.shareXFiles(
+          [XFile(imagePath.path)],
+          subject: "Bhagvad Gita $slug",
+          text: "Download GitaMobile to increase knowledge from Bhagvad Gita.",
+        );
+        isloading.value = false;
+      } else {
+        if (context.mounted) showSnackBar(context, "Unable to get Image 😥");
+      }
+    } catch (e) {
+      if (context.mounted) showSnackBar(context, e.toString());
+      log(e.toString(), error: e);
+    } finally {
+      isloading.value = false;
+    }
   }
 }

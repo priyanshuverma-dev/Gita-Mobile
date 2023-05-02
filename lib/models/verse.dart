@@ -2,6 +2,8 @@
 //
 //     final verse = verseFromJson(jsonString);
 
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 
 class Verse {
@@ -14,8 +16,8 @@ class Verse {
     required this.text,
     required this.transliteration,
     required this.wordMeanings,
-    this.translations,
-    this.commentaries,
+    required this.translations,
+    required this.commentaries,
   });
 
   String id;
@@ -26,8 +28,8 @@ class Verse {
   String text;
   String transliteration;
   String wordMeanings;
-  List<Commentary>? translations;
-  List<Commentary>? commentaries;
+  List<Commentary> translations;
+  List<Commentary> commentaries;
 
   factory Verse.fromRawJson(String str) => Verse.fromJson(json.decode(str));
 
@@ -55,8 +57,8 @@ class Verse {
         "text": text,
         "transliteration": transliteration,
         "word_meanings": wordMeanings,
-        "translations": List<dynamic>.from(translations!.map((x) => x.toJson())),
-        "commentaries": List<dynamic>.from(commentaries!.map((x) => x.toJson())),
+        "translations": List<dynamic>.from(translations.map((x) => x.toJson())),
+        "commentaries": List<dynamic>.from(commentaries.map((x) => x.toJson())),
       };
 }
 
