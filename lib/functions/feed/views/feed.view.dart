@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../core/constants.dart';
+import '../../../core/imports/index.dart';
 import '../../../theme/index.dart';
+import '../widgets/index.dart';
 import '../controllers/verse.controller.dart';
-import '../wigets/index.dart';
-import '../wigets/networkError.card.dart';
 
 class FeedView extends StatefulWidget {
   const FeedView({super.key});
@@ -77,12 +78,10 @@ class _FeedViewState extends State<FeedView> {
                 onPressSearch: () => Get.toNamed('/search'),
               ),
               if (controller.isloading.value)
-                const SizedBox.square(
+                SizedBox.square(
                   dimension: 200,
                   child: Center(
-                    child: CircularProgressIndicator(
-                      color: Pallet.darkColor,
-                    ),
+                    child: Lottie.asset(PLotties.loading),
                   ),
                 )
               else

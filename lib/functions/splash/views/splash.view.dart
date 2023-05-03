@@ -29,7 +29,7 @@ class _SplashViewState extends State<SplashView> {
         child: Column(
           children: [
             Expanded(
-              child: Lottie.asset(PLotties.loading),
+              child: Lottie.asset(PLotties.splash),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),

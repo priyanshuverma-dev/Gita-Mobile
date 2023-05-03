@@ -69,13 +69,13 @@ class FeedAppbar extends StatelessWidget {
             ),
           ),
           const Spacer(flex: 1),
-          IconButton(
-            onPressed: onPressSearch,
-            icon: SvgPicture.asset(
-              PIcons.searchFilled,
-              height: 20,
-            ),
-          )
+          // IconButton(
+          //   onPressed: onPressSearch,
+          //   icon: SvgPicture.asset(
+          //     PIcons.searchFilled,
+          //     height: 20,
+          //   ),
+          // )
         ],
       ),
     );
