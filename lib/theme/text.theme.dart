@@ -16,3 +16,18 @@ final TextTheme textThemeLight = TextTheme(
   labelLarge: GoogleFonts.secularOne(fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25, color: Colors.black),
   labelSmall: GoogleFonts.secularOne(fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5, color: Colors.black),
 );
+final TextTheme textThemeDark = TextTheme(
+  displayLarge: GoogleFonts.secularOne(fontSize: 97, fontWeight: FontWeight.w300, letterSpacing: -1.5, color: Colors.white),
+  displayMedium: GoogleFonts.secularOne(fontSize: 61, fontWeight: FontWeight.w300, letterSpacing: -0.5, color: Colors.white),
+  displaySmall: GoogleFonts.secularOne(fontSize: 48, fontWeight: FontWeight.w400, color: Colors.white),
+  headlineMedium: GoogleFonts.secularOne(fontSize: 34, fontWeight: FontWeight.w400, letterSpacing: 0.25, color: Colors.white),
+  headlineSmall: GoogleFonts.secularOne(fontSize: 24, fontWeight: FontWeight.w400, color: Colors.white),
+  titleLarge: GoogleFonts.secularOne(fontSize: 20, fontWeight: FontWeight.w500, letterSpacing: 0.15, color: Colors.white),
+  titleMedium: GoogleFonts.secularOne(fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15, color: Colors.white),
+  titleSmall: GoogleFonts.secularOne(fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1, color: Colors.white),
+  bodyLarge: GoogleFonts.secularOne(fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.5, color: Colors.white),
+  bodyMedium: GoogleFonts.secularOne(fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25, color: Colors.white),
+  bodySmall: GoogleFonts.secularOne(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4, color: Colors.white),
+  labelLarge: GoogleFonts.secularOne(fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25, color: Colors.white),
+  labelSmall: GoogleFonts.secularOne(fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5, color: Colors.white),
+);

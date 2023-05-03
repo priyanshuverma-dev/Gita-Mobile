@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -63,6 +64,11 @@ class _FeedViewState extends State<FeedView> {
     final ScreenshotController screenshotController = ScreenshotController();
     final VerseController controller = Get.put(VerseController(context: context));
 
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarBrightness: Brightness.light,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Pallet.whiteColor,
+    ));
     return Scaffold(
       backgroundColor: Pallet.primaryColor,
       body: SingleChildScrollView(

@@ -1,8 +1,6 @@
 import 'package:GitaMobile/core/animations/fade_animation.dart';
-import 'package:GitaMobile/core/imports/icons.dart';
 import 'package:GitaMobile/theme/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class FeedAppbar extends StatelessWidget {
   final String profileUrl;
