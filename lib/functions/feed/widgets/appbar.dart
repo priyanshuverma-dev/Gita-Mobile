@@ -30,7 +30,7 @@ class FeedAppbar extends StatelessWidget {
             onTap: ontapProfile,
             child: CircleAvatar(
               radius: 23,
-              backgroundImage: NetworkImage(
+              backgroundImage: AssetImage(
                 profileUrl,
               ),
             ),

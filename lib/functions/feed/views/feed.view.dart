@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 
-import '../../../core/constants.dart';
 import '../../../core/imports/index.dart';
 import '../../../theme/index.dart';
 import '../widgets/index.dart';
@@ -73,9 +72,9 @@ class _FeedViewState extends State<FeedView> {
             children: [
               FeedAppbar(
                 name: 'Priyanshu',
-                profileUrl: Constants.photourl,
-                ontapProfile: () => Get.toNamed('/about'),
-                onPressSearch: () => Get.toNamed('/search'),
+                profileUrl: PIMGS.defaultUser,
+                ontapProfile: () {},
+                onPressSearch: () {},
               ),
               if (controller.isloading.value)
                 SizedBox.square(
