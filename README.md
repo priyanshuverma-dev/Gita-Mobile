@@ -3,4 +3,4 @@
 It is a mobile application integrated Bhagavad Gita.
 
 
-Founder $ Developer Priyanshu Verma
+Founder $ Developer Antriksh Verma
