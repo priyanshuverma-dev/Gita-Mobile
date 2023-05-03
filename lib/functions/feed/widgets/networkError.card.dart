@@ -14,30 +14,31 @@ class NetworkErrorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Card(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.only(
-            bottom: 20,
-            right: 10,
-            left: 10,
-          ),
-          child: Column(
-            children: [
-              Lottie.asset(
-                PLotties.networkError,
-                height: MediaQuery.of(context).size.height * 0.3,
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.only(
+          bottom: 20,
+          right: 10,
+          left: 10,
+        ),
+        child: Column(
+          children: [
+            Lottie.asset(
+              PLotties.networkError,
+            ),
+            TextButton.icon(
+              label: const Text(
+                'Retry',
+                style: TextStyle(color: Pallet.darkColor, fontSize: 18),
               ),
-              IconButton(
-                onPressed: onReload,
-                icon: const Icon(
-                  Icons.refresh_rounded,
-                  size: 30,
-                  color: Pallet.darkColor,
-                ),
+              onPressed: onReload,
+              icon: const Icon(
+                Icons.refresh_rounded,
+                size: 30,
+                color: Pallet.darkColor,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:GitaMobile/functions/about/views/about.view.dart';
 import 'package:GitaMobile/functions/feed/views/explain.listing.view.dart';
+import 'package:GitaMobile/functions/feed/views/feed.view.dart';
 import 'package:GitaMobile/functions/feed/views/reading.view.dart';
-import 'package:GitaMobile/functions/home/views/home.view.dart';
 import 'package:GitaMobile/functions/search/views/search.view.dart';
 import 'package:GitaMobile/functions/splash/views/splash.view.dart';
 import 'package:get/get.dart';
@@ -15,7 +15,7 @@ appRoutes() => [
       ),
       GetPage(
         name: '/',
-        page: () => const HomeView(),
+        page: () => const FeedView(),
         transition: Transition.fadeIn,
         transitionDuration: const Duration(milliseconds: 250),
       ),

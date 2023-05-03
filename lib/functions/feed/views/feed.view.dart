@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../core/imports/index.dart';
+import '../../../core/loader.dart';
 import '../../../theme/index.dart';
-import '../widgets/index.dart';
 import '../controllers/verse.controller.dart';
+import '../widgets/index.dart';
 
 class FeedView extends StatefulWidget {
   const FeedView({super.key});
@@ -74,56 +74,50 @@ class _FeedViewState extends State<FeedView> {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Obx(
-          () => Column(
-            children: [
-              FeedAppbar(
-                name: 'Priyanshu',
-                profileUrl: PIMGS.defaultUser,
-                ontapProfile: () {},
-                onPressSearch: () {},
-              ),
-              if (controller.isloading.value)
-                SizedBox.square(
-                  dimension: 200,
-                  child: Center(
-                    child: Lottie.asset(PLotties.loading),
-                  ),
-                )
-              else
-                controller.dailyVerse.value.text.isNotEmpty
-                    ? ShlokaCard(
-                        onPressRight: controller.increaseVerseNo,
-                        onPressLeft: () {
-                          if (controller.verseNo.value == 0) {
-                            return;
-                          } else {
-                            controller.descreseVerseNo();
-                          }
-                        },
-                        onPressLike: () {},
-                        onPressExplain: () => Get.toNamed(
-                          'explain',
-                          arguments: [...controller.dailyVerse.value.translations, ...controller.dailyVerse.value.commentaries],
-                        ),
-                        onPressShare: () => controller.shareVerse(
-                          shotController: screenshotController,
-                          context: context,
-                          slug: controller.dailyVerse.value.slug,
-                          getPermissionDialog: getPermissionDialog,
-                        ),
-                        titleText: controller.dailyVerse.value.slug,
-                        child: Screenshot(
-                          controller: screenshotController,
-                          child: MainContent(
-                            shlokaText: controller.dailyVerse.value.text,
-                            shlokaEngText: controller.dailyVerse.value.transliteration,
-                            translation: controller.dailyVerse.value.translations[0].description,
-                          ),
-                        ),
-                      )
-                    : NetworkErrorCard(onReload: controller.getVerse),
-            ],
-          ),
+          () => controller.isloading.value
+              ? const Loader()
+              : Column(
+                  children: [
+                    FeedAppbar(
+                      name: 'Devotees of Krishna',
+                      profileUrl: PIMGS.defaultUser,
+                      ontapProfile: () {},
+                      onPressSearch: () {},
+                    ),
+                    controller.dailyVerse.value.text.isNotEmpty
+                        ? ShlokaCard(
+                            onPressRight: controller.increaseVerseNo,
+                            onPressLeft: () {
+                              if (controller.verseNo.value == 0) {
+                                return;
+                              } else {
+                                controller.descreseVerseNo();
+                              }
+                            },
+                            onPressLike: () {},
+                            onPressExplain: () => Get.toNamed(
+                              'explain',
+                              arguments: [...controller.dailyVerse.value.translations, ...controller.dailyVerse.value.commentaries],
+                            ),
+                            onPressShare: () => controller.shareVerse(
+                              shotController: screenshotController,
+                              context: context,
+                              slug: controller.dailyVerse.value.slug,
+                              getPermissionDialog: getPermissionDialog,
+                            ),
+                            titleText: controller.dailyVerse.value.slug,
+                            child: Screenshot(
+                              controller: screenshotController,
+                              child: MainContent(
+                                shlokaText: controller.dailyVerse.value.text,
+                                shlokaEngText: controller.dailyVerse.value.transliteration,
+                                translation: controller.dailyVerse.value.translations[0].description,
+                              ),
+                            ),
+                          )
+                        : NetworkErrorCard(onReload: controller.getVerse),
+                  ],
+                ),
         ),
       ),
     );

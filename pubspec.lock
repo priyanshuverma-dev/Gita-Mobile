@@ -41,6 +41,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.1"
+  checked_yaml:
+    dependency: transitive
+    description:
+      name: checked_yaml
+      sha256: "3d1505d91afa809d177efd4eed5bb0eb65805097a1463abdd2add076effae311"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
+  cli_util:
+    dependency: transitive
+    description:
+      name: cli_util
+      sha256: b8db3080e59b2503ca9e7922c3df2072cf13992354d5e944074ffa836fba43b7
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0"
   clock:
     dependency: transitive
     description:
@@ -118,6 +134,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_launcher_icons:
+    dependency: "direct dev"
+    description:
+      name: flutter_launcher_icons
+      sha256: "526faf84284b86a4cb36d20a5e45147747b7563d921373d4ee0559c54fcdbcea"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.13.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -176,6 +200,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  image:
+    dependency: transitive
+    description:
+      name: image
+      sha256: "73964e3609fb96e01e69b0924b939967c556e46c7ff05db2ea9e31019000f4ef"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.16"
   js:
     dependency: transitive
     description:
@@ -184,6 +216,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.5"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      sha256: c33da08e136c3df0190bd5bbe51ae1df4a7d96e7954d1d7249fea2968a72d317
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.8.0"
   lints:
     dependency: transitive
     description:
@@ -304,14 +344,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.5"
-  pedantic:
-    dependency: transitive
-    description:
-      name: pedantic
-      sha256: "67fc27ed9639506c856c840ccce7594d0bdcd91bc8d53d6e52359449a1d50602"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.11.1"
   permission_handler:
     dependency: "direct main"
     description:
@@ -400,14 +432,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  sa_v1_migration:
-    dependency: "direct main"
-    description:
-      name: sa_v1_migration
-      sha256: "6577cbb7d8842347360a7c805ebee91b3248d5887d20f883bbedff5047cddc10"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.2"
   screenshot:
     dependency: "direct main"
     description:
@@ -488,14 +512,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
-  simple_animations:
-    dependency: "direct main"
-    description:
-      name: simple_animations
-      sha256: "48e065ed7264fa6b3e82450544ecde8ae84ff2aaa00fb39e8a90fc05d608084f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -533,22 +549,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  supercharged:
-    dependency: transitive
-    description:
-      name: supercharged
-      sha256: ab49c848b33e28243f5ce82b976736de17d0852b71d0dfbde53fbb5e2ecca7cb
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.1"
-  supercharged_dart:
-    dependency: transitive
-    description:
-      name: supercharged_dart
-      sha256: cb95edda32eacd27664089700a750120be41daa84aa6cd2aeded46227c16b867
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.1"
   term_glyph:
     dependency: transitive
     description:
@@ -669,6 +669,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.2"
+  yaml:
+    dependency: transitive
+    description:
+      name: yaml
+      sha256: "23812a9b125b48d4007117254bca50abb6c712352927eece9e155207b1db2370"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.1"
 sdks:
   dart: ">=2.19.5 <3.0.0"
   flutter: ">=3.7.0-0"

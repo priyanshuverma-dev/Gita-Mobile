@@ -1,6 +1,6 @@
-import 'package:GitaMobile/core/animations/fade_animation.dart';
-import 'package:GitaMobile/theme/index.dart';
 import 'package:flutter/material.dart';
+
+import 'package:GitaMobile/theme/index.dart';
 
 class FeedAppbar extends StatelessWidget {
   final String profileUrl;
@@ -36,32 +36,29 @@ class FeedAppbar extends StatelessWidget {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: FadeAnimation(
-                .0001,
-                Text.rich(
-                  textAlign: TextAlign.start,
-                  maxLines: 5,
-                  softWrap: true,
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Hello, ',
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: Pallet.darkColor,
-                              fontSize: 17,
-                            ),
-                      ),
-                      TextSpan(
-                        text: '$name ',
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Pallet.darkColor,
-                              fontSize: 17,
-                            ),
-                      ),
-                    ],
-                  ),
+              child: Text.rich(
+                textAlign: TextAlign.start,
+                maxLines: 5,
+                softWrap: true,
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Hello, ',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: Pallet.darkColor,
+                            fontSize: 17,
+                          ),
+                    ),
+                    TextSpan(
+                      text: '$name ',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Pallet.darkColor,
+                            fontSize: 17,
+                          ),
+                    ),
+                  ],
                 ),
               ),
             ),
