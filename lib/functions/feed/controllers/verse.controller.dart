@@ -121,8 +121,6 @@ class VerseController extends GetxController {
       // taking screenshot with controller....
       final image = await shotController.capture(delay: const Duration(microseconds: 10));
       // Checking if screenshot is taken [image] = screenshot is null
-      log(image.toString());
-      log('image');
       if (image != null) {
         /// image is not null than save that to storage
         /// saving in [File] type in [Png] format in

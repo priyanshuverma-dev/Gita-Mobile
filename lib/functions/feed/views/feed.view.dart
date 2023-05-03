@@ -4,8 +4,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../core/constants.dart';
-import '../../../core/utils.dart';
-import '../../../models/verse.dart';
 import '../../../theme/index.dart';
 import '../controllers/verse.controller.dart';
 import '../wigets/index.dart';
@@ -79,7 +77,14 @@ class _FeedViewState extends State<FeedView> {
                 onPressSearch: () => Get.toNamed('/search'),
               ),
               if (controller.isloading.value)
-                const CircularProgressIndicator()
+                const SizedBox.square(
+                  dimension: 200,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Pallet.darkColor,
+                    ),
+                  ),
+                )
               else
                 controller.dailyVerse.value.text.isNotEmpty
                     ? ShlokaCard(
@@ -89,10 +94,9 @@ class _FeedViewState extends State<FeedView> {
                             return;
                           } else {
                             controller.descreseVerseNo();
-                            print([...controller.dailyVerse.value.translations, ...controller.dailyVerse.value.commentaries]);
                           }
                         },
-                        onPressLike: () => showSnackBar(context, 'Testing snackbar!'),
+                        onPressLike: () {},
                         onPressExplain: () => Get.toNamed(
                           'explain',
                           arguments: [...controller.dailyVerse.value.translations, ...controller.dailyVerse.value.commentaries],

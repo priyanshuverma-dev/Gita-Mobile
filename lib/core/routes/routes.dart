@@ -1,5 +1,6 @@
 import 'package:GitaMobile/functions/about/views/about.view.dart';
 import 'package:GitaMobile/functions/feed/views/explain.listing.view.dart';
+import 'package:GitaMobile/functions/feed/views/reading.view.dart';
 import 'package:GitaMobile/functions/home/views/home.view.dart';
 import 'package:GitaMobile/functions/search/views/search.view.dart';
 import 'package:GitaMobile/functions/splash/views/splash.view.dart';
@@ -21,9 +22,16 @@ appRoutes() => [
       GetPage(
         name: '/explain',
         page: () => const ExplainListingView(),
-        transition: Transition.downToUp,
+        transition: Transition.cupertino,
         transitionDuration: const Duration(milliseconds: 250),
-        fullscreenDialog: true,
+        showCupertinoParallax: true,
+      ),
+      GetPage(
+        name: '/read',
+        page: () => const ReadingView(),
+        transition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 250),
+        showCupertinoParallax: true,
       ),
       GetPage(
         name: '/about',

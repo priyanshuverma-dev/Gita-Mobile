@@ -37,12 +37,15 @@ class ShlokaCard extends StatelessWidget {
           ),
           child: Column(
             children: [
-              const Text(
-                'Bhagavad Gita',
-                style: TextStyle(
-                  color: Pallet.darkColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+              const Padding(
+                padding: EdgeInsets.only(top: 8),
+                child: Text(
+                  'Bhagavad Gita',
+                  style: TextStyle(
+                    color: Pallet.darkColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
               ),
               Padding(
