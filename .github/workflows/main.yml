@@ -37,4 +37,4 @@ jobs:
         with:
           artifacts: "build/app/outputs/flutter-apk/*,build/ios/iphoneos/app.ipa"
           tag: v1.1.5
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN  }}
