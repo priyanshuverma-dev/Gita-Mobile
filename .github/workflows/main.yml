@@ -17,11 +17,11 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
-          java-version: '11'
-          distribution: 'temurin'
+          java-version: "11"
+          distribution: "temurin"
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.7.8'
+          flutter-version: "3.7.8"
       - run: flutter pub get
       - run: flutter build apk --release
       - run: |
@@ -36,5 +36,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/flutter-apk/*,build/ios/iphoneos/app.ipa"
-          tag: v1.1.${{ github.run_number }}
+          tag: v1.1.5
           token: ${{ secrets.TOKEN }}

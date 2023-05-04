@@ -132,7 +132,7 @@ class VerseController extends GetxController {
         await Share.shareXFiles(
           [XFile(imagePath.path)],
           subject: "Bhagvad Gita $slug",
-          text: "Download GitaMobile to increase knowledge from Bhagvad Gita.",
+          text: "Download Gita Mobile. https://bit.ly/3nqrW51",
         );
         isloading.value = false;
       } else {
