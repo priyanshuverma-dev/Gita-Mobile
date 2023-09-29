@@ -1,5 +1,4 @@
 [![wakatime](https://wakatime.com/badge/user/a4c237dc-fe02-47f0-97b5-c25292afe1cf/project/9ccc5efd-48f0-4fb4-8708-8729d4598fd5.svg)](https://wakatime.com/badge/user/a4c237dc-fe02-47f0-97b5-c25292afe1cf/project/9ccc5efd-48f0-4fb4-8708-8729d4598fd5)
-Certainly! Below is a sample `README.md` file for your "Gita Mobile" Flutter app project. You can customize it to provide more specific information about your project, including installation instructions, usage guidelines, and additional details:
 
 # Gita Mobile
 
