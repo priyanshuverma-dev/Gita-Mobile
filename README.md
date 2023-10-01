@@ -22,7 +22,7 @@ To use Gita Mobile, follow these steps:
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/Gita-Mobile.git
+   git clone https://github.com/p7uverma/Gita-Mobile.git
    ```
 
 2. Navigate to the project directory:
